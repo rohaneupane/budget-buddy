@@ -1,0 +1,12 @@
+CREATE TABLE expenses (
+    expense_id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL REFERENCES users(user_id),
+    category_id BIGINT REFERENCES categories(category_id),
+    amount DECIMAL(12,2) NOT NULL,
+    description VARCHAR(255),
+    date DATE NOT NULL,
+    payment_mode VARCHAR(50), -- UPI, CASH, CARD
+    budget_id BIGINT REFERENCES budgets(budget_id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
